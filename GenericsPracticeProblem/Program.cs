@@ -2,9 +2,9 @@
 {
     internal class Program
     {
-        static int FindMax(int a, int b, int c)
+        static float FindMax(float a, float b, float c)
         {
-            int max = a;
+            float max = a;
             if (b.CompareTo(max) > 0)
             {
                 max = b;
@@ -21,13 +21,13 @@
             Console.WriteLine("Finding Maximum using Generics");
 
             // Test cases
-            int result1 = FindMax(15, 10, 5);
+            float result1 = FindMax(15.25f, 10.65f, 5.89f);
             Console.WriteLine("Test case 1: Max number at first position: " + result1);
 
-            int result2 = FindMax(5, 15, 10);
+            float result2 = FindMax(10.65f, 15.25f, 5.89f);
             Console.WriteLine("Test case 2: Max number at second position: " + result2);
 
-            int result3 = FindMax(10, 5, 15);
+            float result3 = FindMax(10.65f, 5.89f, 15.25f);
             Console.WriteLine("Test case 3: Max number at third position: " + result3);
         }
     }
