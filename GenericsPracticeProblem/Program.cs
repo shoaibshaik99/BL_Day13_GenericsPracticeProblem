@@ -2,9 +2,9 @@
 {
     internal class Program
     {
-        static string FindMax(string a, string b, string c)
+        static T FindMax<T>(T a, T b, T c) where T : IComparable<T>
         {
-            string max = a;
+            T max = a;
             if (b.CompareTo(max) > 0)
             {
                 max = b;
@@ -16,21 +16,18 @@
             return max;
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Finding Maximum using Generics");
 
-            //Ascending order is a A b B c C...
-            //Is it lexographic order?
-            // Test cases
             string result1 = FindMax("Car", "Amphoteric", "Brain");
-            Console.WriteLine("Test case 1: Max number at first position: " + result1);
+            Console.WriteLine("Test case 1: Max String at first position: " + result1);
 
-            string result2 = FindMax("Brain", "Car", "Amphoteric");
-            Console.WriteLine("Test case 2: Max number at second position: " + result2);
+            int result2 = FindMax(21, 86, 55);
+            Console.WriteLine("Test case 2: Max Integer at second position: " + result2);
 
-            string result3 = FindMax("Amphoteric", "Brain", "Car");
-            Console.WriteLine("Test case 3: Max number at third position: " + result3);
+            float result3 = FindMax(26.58f, 99.23f, 206.74f);
+            Console.WriteLine("Test case 3: Max float at third position: " + result3);
         }
     }
 }
