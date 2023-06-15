@@ -9,7 +9,9 @@
 
     public T TestMaximum()
     {
-        return Maximum<T>.TestMaximum(values);
+        T max = Maximum<T>.TestMaximum(values);
+        Maximum<T>.PrintMax(max);
+        return max;
     }
 
     public static T TestMaximum(params T[] values)
@@ -41,5 +43,10 @@
             }
         }
         return values[n - 1];
+    }
+
+    public static void PrintMax(T max)
+    {
+        Console.WriteLine("Max value: " + max);
     }
 }
