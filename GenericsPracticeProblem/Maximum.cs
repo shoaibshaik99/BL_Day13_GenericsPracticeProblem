@@ -1,30 +1,45 @@
 ﻿internal class Maximum<T> where T : IComparable<T>
 {
-    private T a, b, c;
+    private T[] values;
 
-    public Maximum(T a, T b, T c)
+    public Maximum(params T[] values)
     {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.values = values;
     }
 
     public T TestMaximum()
     {
-        return Maximum<T>.TestMaximum(a, b, c);
+        return Maximum<T>.TestMaximum(values);
     }
 
-    public static T TestMaximum(T a, T b, T c)
+    public static T TestMaximum(params T[] values)
     {
-        T max = a;
-        if (b.CompareTo(max) > 0)
+        if (values.Length == 0)
         {
-            max = b;
+            Console.WriteLine("No values provided");
+            return default;
         }
-        if (c.CompareTo(max) > 0)
+
+        int n = values.Length;
+        //bubble sort
+        for (int i = 0; i < n - 1; i++)
         {
-            max = c;
+            bool swapped = false;
+            for (int j = 0; j < n - 1 - i; j++)
+            {
+                if (values[i].CompareTo(values[j]) > 0)
+                {
+                    T temp = values[i];
+                    values[i] = values[j];
+                    values[j] = temp;
+                    swapped = true;
+                }
+            }
+            if (swapped)
+            {
+                break;
+            }
         }
-        return max;
+        return values[n - 1];
     }
 }
